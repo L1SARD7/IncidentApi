@@ -30,7 +30,7 @@
 * `GET /api/incidents/:id` — деталі одного інциденту (публічний).
 * `POST /api/incidents` — створити новий (**потрібен токен**).
 * `PATCH /api/incidents/:id/status` — змінити статус (**тільки Admin**).
-* `PATCH /api/incidents/:id/comment` — додати коментар (**тільки Admin**).
+* `PATCH /api/incidents/:id/comment` — додати коментар (**тільки User**).
 
 ### Тестові акаунти:
 * **Admin:** `admin@incident.local` / `Admin123!`
