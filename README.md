@@ -14,7 +14,7 @@
 `node prisma/seed.js`
 
 3. **Запустити сервер:**
-`npm run dev`
+`npm run start`
 
 ---
 

@@ -5,8 +5,6 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js",
-    "check": "node --check src/server.js && node --check src/app.js && node --check src/services/incidentService.js && node --check src/services/authService.js && node --check prisma/seed.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev --name init",
     "prisma:seed": "node prisma/seed.js"
