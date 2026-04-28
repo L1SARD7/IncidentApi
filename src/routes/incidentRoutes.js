@@ -18,10 +18,10 @@ const {
 
 const router = express.Router();
 
-router.get('/', authenticate, listIncidentsValidator, validateRequest, list);
-router.get('/:id', authenticate, incidentIdValidator, validateRequest, getById);
+router.get('/', listIncidentsValidator, validateRequest, list);
+router.get('/:id', incidentIdValidator, validateRequest, getById);
 router.post('/', authenticate, createIncidentValidator, validateRequest, create);
 router.patch('/:id/status', authenticate, requireAdmin, patchStatusValidator, validateRequest, patchStatus);
-router.patch('/:id/comment', authenticate, requireAdmin, patchCommentValidator, validateRequest, patchComment);
+router.patch('/:id/comment', authenticate, patchCommentValidator, validateRequest, patchComment);
 
 module.exports = router;
