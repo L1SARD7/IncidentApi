@@ -88,3 +88,59 @@ model IncidentPhoto {
   uploadedAt DateTime @default(now())
   incident   Incident @relation(fields: [incidentId], references: [id])
 }
+
+model PumpingStation {
+  id        Int    @id @default(autoincrement())
+  name      String
+  location  String
+  pumps     Pump[]
+
+  @@map("Pumping_stations")
+}
+
+model PumpModel {
+  id    Int    @id @default(autoincrement())
+  name  String
+  pumps Pump[]
+
+  @@map("Pump_models")
+}
+
+model PumpState {
+  id    Int    @id @default(autoincrement())
+  name  String
+  pumps Pump[]
+
+  @@map("Pump_states")
+}
+
+model Pump {
+  id        Int             @id @default(autoincrement())
+  stationId Int             @map("station_id")
+  name      String
+  modelId   Int             @map("model")
+  stateId   Int             @map("state")
+
+  station   PumpingStation  @relation(fields: [stationId], references: [id])
+  model     PumpModel       @relation(fields: [modelId], references: [id])
+  state     PumpState       @relation(fields: [stateId], references: [id])
+  telemetry PumpTelemetry[]
+
+  @@map("Pumps")
+}
+
+model PumpTelemetry {
+  id           Int      @id @default(autoincrement())
+  pumpId       Int      @map("pump_id")
+  time         DateTime
+  voltageV     Float    @map("voltage_v")
+  currentA     Float    @map("current_a")
+  vibrationRms Float    @map("vibration_rms")
+  temperatureC Float    @map("temperature_c")
+  pressureIn   Float    @map("pressure_in")
+  pressureOut  Float    @map("pressure_out")
+
+  pump         Pump     @relation(fields: [pumpId], references: [id])
+
+  @@map("Pumps_telemetry")
+}

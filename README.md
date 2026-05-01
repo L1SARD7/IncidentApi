@@ -32,6 +32,13 @@
 * `PATCH /api/incidents/:id/status` — змінити статус (**тільки Admin**).
 * `PATCH /api/incidents/:id/comment` — додати коментар (**тільки User**).
 
+### IoT / Telemetry
+* `POST /api/v1/pumps/telemetry` — прийом телеметрії насоса (public).
+  * Body приклад:
+    * `pump_id`: number
+    * `time`: ISO 8601 datetime (наприклад `2026-05-01T15:30:00Z`)
+    * `voltage_v`, `current_a`, `vibration_rms`, `temperature_c`, `pressure_in`, `pressure_out`: number
+
 ### Тестові акаунти:
 * **Admin:** `admin@incident.local` / `Admin123!`
 * **User:** `user@incident.local` / `User123!`

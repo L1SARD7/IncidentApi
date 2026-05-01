@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const authRoutes = require('./routes/authRoutes');
 const incidentRoutes = require('./routes/incidentRoutes');
+const pumpTelemetryRoutes = require('./routes/pumpTelemetryRoutes');
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get('/health', (req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/incidents', incidentRoutes);
+app.use('/api/v1/pumps', pumpTelemetryRoutes);
 
 module.exports = app;
